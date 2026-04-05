@@ -25,6 +25,12 @@ Use this skill for substantive work in this repo.
 - Update `AGENTS.md` for repo-wide agent rules.
 - Update `docs/HANDOFF.md` for durable limitations, workarounds, and open work.
 
+## Closeout
+
+1. Before ending a substantial session, consolidate reusable findings into the tracked repo memory files.
+2. Remove temporary artifacts that are not meant to become durable repo assets.
+3. Keep `SKILL.md` under 100 lines and move longer guidance into tracked docs.
+
 ## Guardrails
 
 - Do not commit machine-local Codex config, auth, tokens, browser state, or per-clone GitHub identity setup.
