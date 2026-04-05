@@ -1,0 +1,11 @@
+.DS_Store
+node_modules/
+coverage/
+dist/
+playwright-report/
+test-results/
+.playwright/
+.env
+.env.*
+.codex/config.toml
+.codex/gh-token

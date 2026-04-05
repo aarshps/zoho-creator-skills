@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
+PROJECT_ROOT="$(CDPATH= cd -- "${SCRIPT_DIR}/../.." && pwd)"
+REAL_GH="/opt/homebrew/bin/gh"
+EXPECTED_LOGIN="aarshps"
+TOKEN_FILE="${PROJECT_ROOT}/.codex/gh-token"
+
+candidate=""
+if [[ -n "${GH_AARSHPS_TOKEN:-}" ]]; then
+  candidate="${GH_AARSHPS_TOKEN}"
+elif [[ -f "${TOKEN_FILE}" ]]; then
+  candidate="$(tr -d '\r\n' < "${TOKEN_FILE}")"
+fi
+
+if [[ -z "${candidate}" ]]; then
+  cat >&2 <<EOF
+Missing a project-local GitHub token for ${EXPECTED_LOGIN}.
+Add the token to ${TOKEN_FILE} or export GH_AARSHPS_TOKEN before using git/gh in this folder.
+EOF
+  exit 1
+fi
+
+login="$(
+  GH_TOKEN="${candidate}" GH_PROMPT_DISABLED=1 "${REAL_GH}" api user --jq .login 2>/dev/null || true
+)"
+
+if [[ "${login}" != "${EXPECTED_LOGIN}" ]]; then
+  cat >&2 <<EOF
+Refusing to use a GitHub token that resolves to '${login:-unknown}'.
+This folder is pinned to the GitHub identity '${EXPECTED_LOGIN}' only.
+EOF
+  exit 1
+fi
+
+printf '%s' "${candidate}"
