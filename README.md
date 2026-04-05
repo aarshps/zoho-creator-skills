@@ -16,6 +16,7 @@ The Zoho Creator MCP is still primitive. This repo is meant to capture the worki
 Some project settings are intentionally local and are not committed:
 
 - `.codex/config.toml` for this folder's Zoho MCP connection
-- `.codex/gh-token` for the `aarshps` GitHub token used by local wrappers
+- `.codex/local/` for machine-specific helper scripts and per-clone workflow glue
+- `.codex/gh-token` for local GitHub auth when a machine-specific token is needed
 
-Committed project-local helpers live under `.codex/` and enforce this folder's Git/GitHub identity and workflow rules.
+Machine-specific Git and GitHub identity setup should stay local to each clone and should not be committed to the repo.

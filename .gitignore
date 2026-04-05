@@ -8,4 +8,5 @@ test-results/
 .env
 .env.*
 .codex/config.toml
+.codex/local/
 .codex/gh-token

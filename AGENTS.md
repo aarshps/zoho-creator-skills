@@ -1,6 +1,6 @@
 # Project Rules
 
-- For any Git command in this folder, use `bash ./.codex/bin/git`.
-- For any GitHub CLI command in this folder, use `bash ./.codex/bin/gh`.
-- The only allowed GitHub identity for this folder is `aarshps`.
-- If auth resolves to any account other than `aarshps`, stop instead of falling back to another identity.
+- This repo is for developing Zoho Creator apps with Zoho Creator MCP, Playwright MCP, Chrome DevTools Protocol, and agent skills.
+- Prefer Zoho Creator MCP first. If it cannot perform a task, use Playwright MCP, CDP, or agent skills to bridge the gap.
+- Keep machine-local Codex config, auth tokens, and browser state out of git.
+- Keep machine-specific Git and GitHub identity setup local to each clone instead of committing it to the repo.
